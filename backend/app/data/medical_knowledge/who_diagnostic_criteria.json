@@ -1,0 +1,20 @@
+[
+  {
+    "id": "who_hyperglycaemia_criteria",
+    "source": "World Health Organization (WHO) & International Diabetes Federation (IDF)",
+    "document_title": "Definition and Diagnosis of Diabetes Mellitus and Intermediate Hyperglycaemia",
+    "section": "Diagnostic Criteria for Diabetes Mellitus and Other Categories of Hyperglycaemia (Section 1)",
+    "publication_year": 2019,
+    "url_or_doi": "https://www.who.int/publications/i/item/definition-and-diagnosis-of-diabetes-mellitus-and-intermediate-hyperglycaemia",
+    "biomarker": "Glucose",
+    "measurement_type": "Venous Plasma Glucose",
+    "reference_ranges": {
+      "fasting_normal": "< 6.1 mmol/L (< 110 mg/dL)",
+      "fasting_impaired": "6.1 to 6.9 mmol/L (110 - 125 mg/dL)",
+      "2h_post_load_normal": "< 7.8 mmol/L (< 140 mg/dL)",
+      "2h_post_load_impaired": "7.8 to 11.0 mmol/L (140 - 199 mg/dL)"
+    },
+    "guideline_statement": "WHO diagnostic criteria classify intermediate hyperglycaemia into Impaired Fasting Glycaemia (IFG) and Impaired Glucose Tolerance (IGT). Both categories represent elevated metabolic risk states rather than diabetes disease state.",
+    "clinical_context": "Clinical guidelines from WHO explicitly emphasize that statistical risk models and screening markers serve to identify candidates for confirmatory venous blood testing, not to deliver definitive clinical diagnosis."
+  }
+]

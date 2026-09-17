@@ -1,0 +1,55 @@
+[
+  {
+    "id": "cdc_niddk_bmi_classification",
+    "source": "Centers for Disease Control and Prevention (CDC) & National Institutes of Health (NIH)",
+    "document_title": "Defining Adult Overweight & Obesity; Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults",
+    "section": "Adult Body Mass Index Categories",
+    "publication_year": 2022,
+    "url_or_doi": "https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html",
+    "biomarker": "BMI",
+    "measurement_type": "Body Mass Index (kg/m²)",
+    "reference_ranges": {
+      "underweight": "< 18.5 kg/m²",
+      "healthy_weight": "18.5 - 24.9 kg/m²",
+      "overweight": "25.0 - 29.9 kg/m²",
+      "obesity_class_1": "30.0 - 34.9 kg/m²",
+      "obesity_class_2": "35.0 - 39.9 kg/m²",
+      "obesity_class_3": ">= 40.0 kg/m²"
+    },
+    "guideline_statement": "A BMI of 18.5 to 24.9 kg/m² falls within the healthy weight range for adults. A BMI of 25.0 to 29.9 kg/m² falls within the overweight range. A BMI of 30.0 kg/m² or higher falls within the obesity range. Elevated BMI is a major contributing factor to peripheral insulin resistance.",
+    "clinical_context": "BMI is an anthropometric screening indicator, not a direct measure of body adiposity distribution or visceral fat. Clinical evaluation should consider waist circumference and muscle mass."
+  },
+  {
+    "id": "niddk_serum_insulin_reference",
+    "source": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+    "document_title": "Insulin Resistance & Prediabetes Clinical Overview",
+    "section": "Endogenous Insulin Dynamics & Reference Intervals",
+    "publication_year": 2023,
+    "url_or_doi": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance",
+    "biomarker": "Insulin",
+    "measurement_type": "2-Hour Serum Insulin (mu U/ml or mIU/L)",
+    "reference_ranges": {
+      "fasting_reference": "2.0 - 25.0 mu U/ml",
+      "2h_post_load_reference": "16.0 - 166.0 mu U/ml",
+      "hyperinsulinemia_threshold": "> 166.0 mu U/ml"
+    },
+    "guideline_statement": "Normal fasting serum insulin generally ranges from 2 to 25 mu U/ml, while 2-hour postprandial insulin typically remains under 166 mu U/ml. Elevated circulating insulin in the setting of normal or elevated glucose suggests compensatory hyperinsulinemia secondary to cellular insulin resistance.",
+    "clinical_context": "Insulin levels fluctuate rapidly based on assay methodology, recent carbohydrate intake, and hepatic clearance. Serum insulin tests are primarily utilized in research and specialized metabolic assessments rather than routine first-line diabetes screening."
+  },
+  {
+    "id": "niddk_skinfold_pedigree_notes",
+    "source": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+    "document_title": "Pima Indians Diabetes Clinical Research Archive",
+    "section": "Anthropometric and Hereditary Features in Type 2 Diabetes Studies",
+    "publication_year": 2021,
+    "url_or_doi": "https://doi.org/10.2337/diab.37.12.1595",
+    "biomarker": "SkinThickness & DiabetesPedigreeFunction",
+    "measurement_type": "Triceps Skinfold (mm) & Genetic Pedigree Score",
+    "reference_ranges": {
+      "female_triceps_median": "18.0 - 25.0 mm (general adult reference)",
+      "pedigree_score_median": "0.372 (Pima study sample median; higher values indicate stronger familial clustering)"
+    },
+    "guideline_statement": "Triceps skinfold thickness provides an estimate of subcutaneous adipose tissue. The Diabetes Pedigree Function models the genetic influence and ancestral diabetes burden across first- and second-degree relatives.",
+    "clinical_context": "A higher pedigree score denotes stronger familial clustering of diabetes. Family history is a non-modifiable risk indicator that lowers the threshold for routine clinical metabolic screening."
+  }
+]

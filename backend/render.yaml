@@ -1,0 +1,25 @@
+services:
+  # FastAPI ML & RAG Backend Service
+  - type: web
+    name: medical-report-intelligence-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: medical-report-db
+          property: connectionString
+      - key: MODEL_PATH
+        value: models/diabetes_model.pkl
+
+databases:
+  # Managed PostgreSQL Database for Production Persistence
+  - name: medical-report-db
+    plan: free
+    databaseName: medical_intelligence
+    user: medical_admin

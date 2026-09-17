@@ -1,0 +1,20 @@
+[
+  {
+    "id": "aha_acc_2017_bp_categories",
+    "source": "American Heart Association (AHA) / American College of Cardiology (ACC)",
+    "document_title": "2017 Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults",
+    "section": "Classification of Blood Pressure in Adults (Table 6)",
+    "publication_year": 2018,
+    "url_or_doi": "https://doi.org/10.1161/HYP.0000000000000065",
+    "biomarker": "BloodPressure",
+    "measurement_type": "Diastolic Blood Pressure (mm Hg)",
+    "reference_ranges": {
+      "normal": "< 80 mm Hg",
+      "stage_1_hypertension": "80 - 89 mm Hg",
+      "stage_2_hypertension": ">= 90 mm Hg",
+      "hypertensive_crisis": "> 120 mm Hg"
+    },
+    "guideline_statement": "Normal diastolic blood pressure is below 80 mm Hg. Stage 1 hypertension is defined as a diastolic reading of 80–89 mm Hg. Stage 2 hypertension is defined as a diastolic reading of 90 mm Hg or higher. High blood pressure frequently coexists with insulin resistance and metabolic syndrome.",
+    "clinical_context": "Diastolic blood pressure reflects vascular resistance during cardiac relaxation. Blood pressure values obtained in single visits or screening tools require standardized repeated measurements with calibrated sphygmomanometers before clinical diagnosis."
+  }
+]

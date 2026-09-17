@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ada_2024_fpg_criteria",
+    "source": "American Diabetes Association (ADA)",
+    "document_title": "Standards of Care in Diabetes — 2024",
+    "section": "Classification and Diagnosis of Diabetes (Table 2.2)",
+    "publication_year": 2024,
+    "url_or_doi": "https://doi.org/10.2337/dc24-S002",
+    "biomarker": "Glucose",
+    "measurement_type": "Fasting Plasma Glucose (FPG)",
+    "reference_ranges": {
+      "normal": "< 100 mg/dL (5.6 mmol/L)",
+      "impaired_fasting_glucose": "100 mg/dL to 125 mg/dL (5.6 - 6.9 mmol/L)",
+      "diabetes_provisional_threshold": ">= 126 mg/dL (7.0 mmol/L)"
+    },
+    "guideline_statement": "Normal fasting plasma glucose is defined as below 100 mg/dL. Fasting plasma glucose between 100 and 125 mg/dL indicates impaired fasting glucose (prediabetes). A fasting plasma glucose of 126 mg/dL or higher warrants clinical confirmation via repeat testing in the absence of unequivocal hyperglycemia symptoms.",
+    "clinical_context": "Fasting is defined as no caloric intake for at least 8 hours. In asymptomatic individuals, screening results must be confirmed with a subsequent repeat laboratory test on a separate day before any diagnosis is established."
+  },
+  {
+    "id": "ada_2024_ogtt_criteria",
+    "source": "American Diabetes Association (ADA)",
+    "document_title": "Standards of Care in Diabetes — 2024",
+    "section": "Classification and Diagnosis of Diabetes (Table 2.2)",
+    "publication_year": 2024,
+    "url_or_doi": "https://doi.org/10.2337/dc24-S002",
+    "biomarker": "Glucose",
+    "measurement_type": "2-Hour Oral Glucose Tolerance Test (OGTT, 75g)",
+    "reference_ranges": {
+      "normal": "< 140 mg/dL (7.8 mmol/L)",
+      "impaired_glucose_tolerance": "140 mg/dL to 199 mg/dL (7.8 - 11.0 mmol/L)",
+      "diabetes_provisional_threshold": ">= 200 mg/dL (11.1 mmol/L)"
+    },
+    "guideline_statement": "During a 75-g oral glucose tolerance test, a 2-hour plasma glucose < 140 mg/dL is normal. Values from 140 to 199 mg/dL indicate impaired glucose tolerance (prediabetes). A 2-hour plasma glucose of 200 mg/dL or greater suggests diabetes and requires formal clinical confirmation.",
+    "clinical_context": "The 2-hour OGTT directly measures postprandial glucose clearance kinetics. In the Pima Indian diabetes dataset, the 'Glucose' feature corresponds to 2-hour post-load plasma glucose concentration."
+  },
+  {
+    "id": "ada_2024_risk_factors",
+    "source": "American Diabetes Association (ADA)",
+    "document_title": "Standards of Care in Diabetes — 2024",
+    "section": "Criteria for Screening for Diabetes or Prediabetes in Asymptomatic Adults (Table 2.3)",
+    "publication_year": 2024,
+    "url_or_doi": "https://doi.org/10.2337/dc24-S002",
+    "biomarker": "Demographics and Risk Profile",
+    "measurement_type": "Screening Indications",
+    "reference_ranges": {
+      "screening_age_threshold": "Age >= 35 years for all adults",
+      "overweight_threshold": "BMI >= 25 kg/m² (>= 23 kg/m² in Asian American individuals)"
+    },
+    "guideline_statement": "Screening for prediabetes and diabetes using an assessment of risk factors should be performed in asymptomatic adults who are overweight or obese (BMI >= 25 kg/m²) and have one or more additional risk factors such as first-degree relative with diabetes, high-risk ethnicity, history of gestational diabetes, or hypertension.",
+    "clinical_context": "Screening tools estimate probability of disease to prioritize clinical evaluation. An elevated screening score does not equal disease diagnosis."
+  }
+]
