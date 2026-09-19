@@ -4,8 +4,7 @@ import {
   HistoryResponse,
   GuidelineCitation,
 } from "@/types";
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8002/api/v1";
 
 export async function submitAssessment(data: PatientInput): Promise<AssessmentResponse> {
   const res = await fetch(`${API_BASE}/predict`, {
@@ -61,7 +60,7 @@ export async function fetchGuidelines(biomarker?: string): Promise<GuidelineCita
 
 export async function checkApiHealth(): Promise<{ online: boolean; environment?: string }> {
   try {
-    const res = await fetch(`${API_BASE}/health`, {
+const res = await fetch(`${API_BASE}/health`, {
       method: "GET",
       cache: "no-store",
     });

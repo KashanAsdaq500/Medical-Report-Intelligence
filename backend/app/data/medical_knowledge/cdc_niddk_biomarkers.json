@@ -28,11 +28,7 @@
     "url_or_doi": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/prediabetes-insulin-resistance",
     "biomarker": "Insulin",
     "measurement_type": "2-Hour Serum Insulin (mu U/ml or mIU/L)",
-    "reference_ranges": {
-      "fasting_reference": "2.0 - 25.0 mu U/ml",
-      "2h_post_load_reference": "16.0 - 166.0 mu U/ml",
-      "hyperinsulinemia_threshold": "> 166.0 mu U/ml"
-    },
+
     "guideline_statement": "Normal fasting serum insulin generally ranges from 2 to 25 mu U/ml, while 2-hour postprandial insulin typically remains under 166 mu U/ml. Elevated circulating insulin in the setting of normal or elevated glucose suggests compensatory hyperinsulinemia secondary to cellular insulin resistance.",
     "clinical_context": "Insulin levels fluctuate rapidly based on assay methodology, recent carbohydrate intake, and hepatic clearance. Serum insulin tests are primarily utilized in research and specialized metabolic assessments rather than routine first-line diabetes screening."
   },
@@ -49,7 +45,7 @@
       "female_triceps_median": "18.0 - 25.0 mm (general adult reference)",
       "pedigree_score_median": "0.372 (Pima study sample median; higher values indicate stronger familial clustering)"
     },
-    "guideline_statement": "Triceps skinfold thickness provides an estimate of subcutaneous adipose tissue. The Diabetes Pedigree Function models the genetic influence and ancestral diabetes burden across first- and second-degree relatives.",
+
     "clinical_context": "A higher pedigree score denotes stronger familial clustering of diabetes. Family history is a non-modifiable risk indicator that lowers the threshold for routine clinical metabolic screening."
   }
 ]

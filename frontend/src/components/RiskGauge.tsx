@@ -2,7 +2,7 @@
 
 import React from "react";
 import { PredictionResult } from "@/types";
-import { AlertTriangle, CheckCircle2, ShieldAlert } from "lucide-react";
+import { AlertTriangle, CheckCircle2, ShieldAlert, Clock, Hash, Cpu } from "lucide-react";
 
 interface RiskGaugeProps {
   prediction: PredictionResult;
@@ -14,7 +14,6 @@ export function RiskGauge({ prediction, assessmentId, timestamp }: RiskGaugeProp
   const isElevated = prediction.prediction === 1;
   const prob = prediction.probability_diabetes;
 
-  // Formatting date
   const formattedDate = new Date(timestamp).toLocaleString("en-US", {
     month: "short",
     day: "numeric",
@@ -24,109 +23,154 @@ export function RiskGauge({ prediction, assessmentId, timestamp }: RiskGaugeProp
   });
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 overflow-hidden">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-100 gap-2">
+    <div className="bg-white rounded-xl border border-slate-200/90 shadow-medical p-5 sm:p-7 overflow-hidden">
+      {/* Session Metadata Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-100 gap-3">
         <div>
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-            Machine Learning Decision-Support Result
-          </span>
-          <h3 className="text-xl font-bold text-slate-900 mt-0.5">
-            Diabetes Risk Classification
+          <div className="flex items-center space-x-2">
+            <span className="w-2 h-2 rounded-full bg-teal-600" />
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              Supervised Machine Learning Decision-Support
+            </span>
+          </div>
+          <h3 className="text-xl font-bold text-navy-900 mt-1 tracking-tight">
+            Diabetes Risk Classification Analysis
           </h3>
         </div>
-        <div className="text-left sm:text-right">
-          <span className="inline-block bg-slate-100 text-slate-700 font-mono text-xs px-2.5 py-1 rounded font-medium">
-            {assessmentId}
+        <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto text-xs">
+          <span className="inline-flex items-center space-x-1 bg-surface-50 border border-slate-200 px-2.5 py-1 rounded-md font-mono text-slate-600">
+            <Hash className="w-3 h-3 text-slate-400" />
+            <span>{assessmentId}</span>
           </span>
-          <span className="block text-xs text-slate-400 mt-0.5">{formattedDate}</span>
+          <span className="inline-flex items-center space-x-1 text-slate-400 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-100">
+            <Clock className="w-3 h-3 text-slate-400" />
+            <span>{formattedDate}</span>
+          </span>
         </div>
       </div>
 
-      {/* Main Prediction Banner */}
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+      {/* Primary Classification Cards */}
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+
+        {/* ML Primary Decision */}
         <div
-          className={`p-4 rounded-xl border flex items-center space-x-3.5 ${
+          className={`p-4 rounded-xl border flex flex-col justify-between ${
             isElevated
-              ? "bg-rose-50/80 border-rose-200 text-rose-900"
-              : "bg-emerald-50/80 border-emerald-200 text-emerald-900"
+              ? "bg-rose-50/60 border-rose-200/80 text-rose-950"
+              : "bg-emerald-50/60 border-emerald-200/80 text-emerald-950"
           }`}
         >
-          {isElevated ? (
-            <AlertTriangle className="w-8 h-8 text-rose-600 flex-shrink-0" />
-          ) : (
-            <CheckCircle2 className="w-8 h-8 text-emerald-600 flex-shrink-0" />
-          )}
-          <div>
-            <span className="text-xs uppercase font-semibold opacity-75 block">
-              Decision Tree Output
-            </span>
-            <span className="text-lg font-bold block">
-              {prediction.prediction_label}
-            </span>
-          </div>
-        </div>
-
-        {/* Calculated Probability Metric */}
-        <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-          <span className="text-xs text-slate-500 font-medium block">
-            Calculated Diabetes Probability
-          </span>
-          <div className="flex items-baseline space-x-2 mt-1">
-            <span className="text-2xl font-extrabold text-slate-900">
-              {prediction.probability_diabetes.toFixed(1)}%
-            </span>
-            <span
-              className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
-                prediction.risk_level === "Elevated Risk"
-                  ? "bg-rose-100 text-rose-700"
-                  : prediction.risk_level === "Moderate Risk"
-                  ? "bg-amber-100 text-amber-700"
-                  : "bg-emerald-100 text-emerald-700"
+          <div className="flex items-center space-x-3">
+            <div
+              className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                isElevated ? "bg-rose-100 text-rose-700" : "bg-emerald-100 text-emerald-700"
               }`}
             >
-              {prediction.risk_level}
-            </span>
+              {isElevated ? (
+                <AlertTriangle className="w-5 h-5" />
+              ) : (
+                <CheckCircle2 className="w-5 h-5" />
+              )}
+            </div>
+            <div>
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-slate-500 block">
+                Model Classification
+              </span>
+              <span className="text-base sm:text-lg font-bold block leading-tight">
+                {prediction.prediction_label}
+              </span>
+            </div>
           </div>
+          <p className="text-[11px] text-slate-500 mt-3 pt-2.5 border-t border-slate-200/60 leading-relaxed">
+            Decision tree leaf node prediction based on multi-variate biomarker thresholds.
+          </p>
         </div>
 
-        {/* Calculated Non-Diabetes Probability Metric */}
-        <div className="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-          <span className="text-xs text-slate-500 font-medium block">
-            Calculated Non-Diabetes Probability
-          </span>
-          <div className="flex items-baseline space-x-2 mt-1">
-            <span className="text-2xl font-extrabold text-slate-900">
-              {prediction.probability_no_diabetes.toFixed(1)}%
-            </span>
-            <span className="text-xs text-slate-500 font-medium">
-              Model Baseline
-            </span>
+        {/* Calculated Diabetes Probability */}
+        <div className="bg-surface-50 border border-slate-200/80 p-4 rounded-xl flex flex-col justify-between">
+          <div>
+            <div className="flex justify-between items-start">
+              <span className="text-xs font-semibold text-slate-600 block">
+                Diabetes Risk Probability
+              </span>
+              <span
+                className={`text-[11px] px-2 py-0.5 rounded-md font-bold tracking-tight ${
+                  prediction.risk_level === "Elevated Risk"
+                    ? "bg-rose-100 text-rose-800 border border-rose-200"
+                    : prediction.risk_level === "Moderate Risk"
+                    ? "bg-amber-100 text-amber-800 border border-amber-200"
+                    : "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                }`}
+              >
+                {prediction.risk_level}
+              </span>
+            </div>
+            <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight font-mono">
+              {prediction.probability_diabetes.toFixed(1)}%
+            </div>
           </div>
+          <p className="text-[11px] text-slate-500 mt-3 pt-2.5 border-t border-slate-200/60 leading-relaxed">
+            Posterior probability of diabetes calculated by the decision tree node split.
+          </p>
+        </div>
+
+        {/* Calculated Non-Diabetes Probability */}
+        <div className="bg-surface-50 border border-slate-200/80 p-4 rounded-xl flex flex-col justify-between">
+          <div>
+            <div className="flex justify-between items-start">
+              <span className="text-xs font-semibold text-slate-600 block">
+                Non-Diabetes Probability
+              </span>
+              <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                Baseline
+              </span>
+            </div>
+            <div className="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight font-mono">
+              {prediction.probability_no_diabetes.toFixed(1)}%
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-500 mt-3 pt-2.5 border-t border-slate-200/60 leading-relaxed">
+            Complementary probability representing low likelihood of diabetes mellitus.
+          </p>
         </div>
       </div>
 
-      {/* Visual Risk Probability Bar */}
-      <div className="mt-6">
-        <div className="flex justify-between text-xs font-semibold text-slate-600 mb-1.5">
-          <span>Risk Probability Spectrum</span>
-          <span>{prob.toFixed(1)}%</span>
+      {/* Visual Calibrated Risk Spectrum */}
+      <div className="mt-6 pt-5 border-t border-slate-100">
+        <div className="flex justify-between items-center text-xs font-semibold text-navy-900 mb-2">
+          <span>Clinical Probability Spectrum</span>
+          <span className="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700">
+            Current: {prob.toFixed(1)}%
+          </span>
         </div>
-        <div className="w-full bg-slate-200 h-3 rounded-full overflow-hidden flex">
+
+        {/* 3-Tier Calibrated Spectrum Bar */}
+        <div className="relative w-full h-3 bg-slate-100 rounded-full overflow-hidden flex border border-slate-200/80">
           <div
             className={`h-full transition-all duration-700 rounded-full ${
               prob > 60
                 ? "bg-rose-500"
                 : prob > 35
                 ? "bg-amber-500"
-                : "bg-emerald-500"
+                : "bg-emerald-600"
             }`}
             style={{ width: `${Math.max(prob, 2)}%` }}
           />
         </div>
-        <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-          <span>0% (Low Risk)</span>
-          <span>50% (Threshold)</span>
-          <span>100% (High Risk)</span>
+
+        <div className="flex justify-between text-[11px] text-slate-500 mt-1.5 font-medium">
+          <span className="flex items-center space-x-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>Low Risk (0–35%)</span>
+          </span>
+          <span className="flex items-center space-x-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span>Moderate (35–60%)</span>
+          </span>
+          <span className="flex items-center space-x-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+            <span>Elevated Risk (60–100%)</span>
+          </span>
         </div>
       </div>
     </div>
