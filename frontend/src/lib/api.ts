@@ -4,7 +4,7 @@ import {
   HistoryResponse,
   GuidelineCitation,
 } from "@/types";
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8002/api/v1";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://medical-report-intelligence.vercel.app/api/v1";
 
 export async function submitAssessment(data: PatientInput): Promise<AssessmentResponse> {
   const res = await fetch(`${API_BASE}/predict`, {
