@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 import uuid
 from sqlalchemy import Column, String, Integer, Float, DateTime, Text, Boolean
-from backend.app.db.database import Base
+from app.db.database import Base
 
 
 def generate_assessment_id() -> str:
@@ -43,3 +43,4 @@ class AssessmentRecord(Base):
 
     # Safety & Compliance
     decision_support_disclaimer = Column(Boolean, default=True)
+

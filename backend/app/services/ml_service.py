@@ -4,8 +4,8 @@ from typing import Dict, Any, Tuple
 import joblib
 import pandas as pd
 
-from backend.app.config import settings
-from backend.app.schemas.patient import PatientInput, PredictionResult
+from app.config import settings
+from app.schemas.patient import PatientInput, PredictionResult
 
 logger = logging.getLogger(__name__)
 
@@ -87,3 +87,4 @@ class MLService:
 
 # Singleton instance
 ml_service = MLService()
+

@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from backend.app.db.database import get_db
-from backend.app.schemas.patient import AssessmentHistoryItem
-from backend.app.services.db_service import db_service
+from app.db.database import get_db
+from app.schemas.patient import AssessmentHistoryItem
+from app.services.db_service import db_service
 
 
 router = APIRouter(
@@ -133,3 +133,4 @@ def get_assessment_detail(
         },
         "decision_support_disclaimer": True
     }
+

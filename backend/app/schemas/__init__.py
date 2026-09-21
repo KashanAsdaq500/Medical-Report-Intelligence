@@ -1,11 +1,11 @@
-from backend.app.schemas.patient import (
+from app.schemas.patient import (
     PatientInput,
     PredictionResult,
     BiomarkerComparison,
     AssessmentResponse,
     AssessmentHistoryItem,
 )
-from backend.app.schemas.rag import (
+from app.schemas.rag import (
     GuidelineCitation,
     RAGContextResponse,
 )
@@ -19,3 +19,4 @@ __all__ = [
     "GuidelineCitation",
     "RAGContextResponse",
 ]
+

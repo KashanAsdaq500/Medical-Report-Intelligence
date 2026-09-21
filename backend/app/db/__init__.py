@@ -1,4 +1,5 @@
-from backend.app.db.database import engine, SessionLocal, Base, get_db, init_db
-from backend.app.db.models import AssessmentRecord
+from app.db.database import engine, SessionLocal, Base, get_db, init_db
+from app.db.models import AssessmentRecord
 
 __all__ = ["engine", "SessionLocal", "Base", "get_db", "init_db", "AssessmentRecord"]
+

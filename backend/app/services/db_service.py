@@ -1,8 +1,8 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from backend.app.db.models import AssessmentRecord
-from backend.app.schemas.patient import PatientInput, PredictionResult
-from backend.app.schemas.rag import RAGContextResponse
+from app.db.models import AssessmentRecord
+from app.schemas.patient import PatientInput, PredictionResult
+from app.schemas.rag import RAGContextResponse
 
 
 class DBService:
@@ -62,3 +62,4 @@ class DBService:
 
 
 db_service = DBService()
+

@@ -3,9 +3,9 @@ import logging
 from pathlib import Path
 from typing import List, Dict, Any, Tuple
 
-from backend.app.schemas import patient
-from backend.app.schemas.patient import PatientInput, BiomarkerComparison
-from backend.app.schemas.rag import GuidelineCitation, RAGContextResponse
+from app.schemas import patient
+from app.schemas.patient import PatientInput, BiomarkerComparison
+from app.schemas.rag import GuidelineCitation, RAGContextResponse
 
 logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from backend.app.api.routes_predict import router as predict_router
-from backend.app.api.routes_history import router as history_router
-from backend.app.api.routes_rag import router as rag_router
-from backend.app.config import settings
+from app.api.routes_predict import router as predict_router
+from app.api.routes_history import router as history_router
+from app.api.routes_rag import router as rag_router
+from app.config import settings
 
 api_router = APIRouter(prefix=settings.API_V1_STR)
 
@@ -21,3 +21,4 @@ def health_check():
         "environment": settings.ENVIRONMENT,
         "model_loaded": True
     }
+

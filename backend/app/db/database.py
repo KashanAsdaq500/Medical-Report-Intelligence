@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-from backend.app.config import settings
+from app.config import settings
 
 # Database Engine Configuration:
 # Supports both SQLite (local development/portfolio) and PostgreSQL (Render/Supabase production)
@@ -39,9 +39,10 @@ def get_db():
 
 def init_db():
     """Initializes database schema tables"""
-    import backend.app.db.models  # Ensure models are registered with Base.metadata
+    import app.db.models  # Ensure models are registered with Base.metadata
     Base.metadata.create_all(bind=engine)
 
 
 # Ensure tables are created on module import
 init_db()
+

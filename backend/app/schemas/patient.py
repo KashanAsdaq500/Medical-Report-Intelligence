@@ -1,6 +1,6 @@
 from typing import List, Optional
 from pydantic import BaseModel, Field, ConfigDict
-from backend.app.schemas.rag import RAGContextResponse
+from app.schemas.rag import RAGContextResponse
 
 
 class PatientInput(BaseModel):
@@ -115,3 +115,4 @@ class AssessmentHistoryItem(BaseModel):
     prediction_label: str
     probability_diabetes: float
     risk_level: str
+

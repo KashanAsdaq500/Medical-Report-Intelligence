@@ -3,11 +3,11 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from backend.app.db.database import get_db
-from backend.app.schemas.patient import PatientInput, AssessmentResponse
-from backend.app.services.ml_service import ml_service
-from backend.app.services.rag_service import rag_service
-from backend.app.services.db_service import db_service
+from app.db.database import get_db
+from app.schemas.patient import PatientInput, AssessmentResponse
+from app.services.ml_service import ml_service
+from app.services.rag_service import rag_service
+from app.services.db_service import db_service
 
 
 logger = logging.getLogger(__name__)
@@ -69,3 +69,4 @@ def assess_patient(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Inference processing error: {str(e)}"
         )
+

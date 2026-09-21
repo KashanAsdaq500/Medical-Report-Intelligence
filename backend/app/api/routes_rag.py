@@ -1,7 +1,7 @@
 from typing import List, Optional
 from fastapi import APIRouter, Query
-from backend.app.schemas.rag import GuidelineCitation
-from backend.app.services.rag_service import rag_service
+from app.schemas.rag import GuidelineCitation
+from app.services.rag_service import rag_service
 
 router = APIRouter(prefix="/rag", tags=["RAG Medical Knowledge"])
 
@@ -19,3 +19,4 @@ def list_guidelines(
         out_of_range=[biomarker] if biomarker else ["Glucose", "BMI", "BloodPressure", "Insulin"]
     )
     return all_citations
+
