@@ -11,29 +11,27 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api/v1"
 
-    # Environment
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
 
-    # Dynamic Port support for Render / Railway ($PORT)
     PORT: int = int(os.getenv("PORT", "8000"))
     HOST: str = os.getenv("HOST", "0.0.0.0")
 
-    # Model path resolution: default to project root models/diabetes_model.pkl
-    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
+    # Model path
+    # Works locally and on Vercel where backend/ is the deployment root.
+    BASE_DIR: Path = Path(__file__).resolve().parent.parent
     MODEL_PATH: str = os.getenv(
         "MODEL_PATH",
         str(BASE_DIR / "models" / "diabetes_model.pkl")
     )
 
-    # Database: SQLite locally, easily switched to PostgreSQL via DATABASE_URL
-    # Handles Render/Heroku 'postgres://' -> 'postgresql://' URL formatting
+    # Database
     _raw_db_url: str = os.getenv("DATABASE_URL", "sqlite:///./reports.db")
     if _raw_db_url.startswith("postgres://"):
         DATABASE_URL: str = _raw_db_url.replace("postgres://", "postgresql://", 1)
     else:
         DATABASE_URL: str = _raw_db_url
 
-    # CORS settings: Allows local frontend development and production URLs
+    # CORS
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
@@ -44,4 +42,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-
