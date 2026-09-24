@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@clerk/nextjs";
 
 import React, { useState, useRef, useEffect } from "react";
 import { PatientInput, AssessmentResponse } from "@/types";
@@ -21,6 +22,8 @@ import {
 } from "lucide-react";
 
 export default function DashboardPage() {
+  const { getToken } = useAuth();
+
   const [assessmentResult, setAssessmentResult] = useState<AssessmentResponse | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -52,7 +55,7 @@ export default function DashboardPage() {
     setIsLoading(true);
     setErrorMessage(null);
     try {
-      const response = await submitAssessment(patientData);
+      const response = await submitAssessment(patientData, getToken);
       setAssessmentResult(response);
       setIsModalOpen(false); // Reset modal state on new submission
       // Smooth scroll to results once computed
@@ -95,12 +98,12 @@ export default function DashboardPage() {
               <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
               <span>DecisionTreeClassifier Model</span>
             </span>
-            <span className="text-slate-600">•</span>
+            <span className="text-slate-600">Ã¢â‚¬Â¢</span>
             <span className="flex items-center space-x-1.5">
               <FileText className="w-3.5 h-3.5 text-teal-400" />
               <span>RAG Clinical Guidelines (ADA / WHO / AHA)</span>
             </span>
-            <span className="text-slate-600">•</span>
+            <span className="text-slate-600">Ã¢â‚¬Â¢</span>
             <span className="flex items-center space-x-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
               <span>Anonymized Session Audit</span>
@@ -274,7 +277,7 @@ export default function DashboardPage() {
                           Session Audit Record:{" "}
                           <strong className="font-mono text-clinical-800">{assessmentResult.id}</strong>
                         </span>
-                        <span>•</span>
+                        <span>Ã¢â‚¬Â¢</span>
                         <span>
                           Evaluated{" "}
                           {new Date(assessmentResult.timestamp).toLocaleTimeString([], {

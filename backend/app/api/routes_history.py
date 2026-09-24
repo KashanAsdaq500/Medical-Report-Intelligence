@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from app.auth import CurrentUser
 from app.db.database import get_db
 from app.schemas.patient import AssessmentHistoryItem
 from app.services.db_service import db_service
@@ -28,7 +29,7 @@ class HistoryResponse(BaseModel):
     summary="List Past Clinical Assessments",
     description=(
         "Retrieves paginated historical clinical assessments "
-        "from the PostgreSQL database."
+        "belonging to the authenticated Clerk user."
     )
 )
 def get_assessment_history(
@@ -43,12 +44,17 @@ def get_assessment_history(
         le=100,
         description="Number of items to retrieve"
     ),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    user_id: CurrentUser = None,
 ):
-    total = db_service.get_total_count(db)
+    total = db_service.get_total_count(
+        db,
+        user_id=user_id
+    )
 
     records = db_service.get_assessments(
         db,
+        user_id=user_id,
         skip=skip,
         limit=limit
     )
@@ -81,17 +87,19 @@ def get_assessment_history(
     "/{assessment_id}",
     summary="Get Specific Assessment Detail",
     description=(
-        "Retrieves complete assessment details "
-        "from the PostgreSQL database."
+        "Retrieves complete assessment details from the PostgreSQL database "
+        "only when the assessment belongs to the authenticated user."
     )
 )
 def get_assessment_detail(
     assessment_id: str,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    user_id: CurrentUser = None,
 ):
     record = db_service.get_assessment_by_id(
         db,
-        assessment_id
+        assessment_id,
+        user_id=user_id
     )
 
     if not record:
@@ -133,4 +141,3 @@ def get_assessment_detail(
         },
         "decision_support_disclaimer": True
     }
-

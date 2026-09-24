@@ -12,3 +12,5 @@ pytest>=8.0.0
 python-dotenv>=1.0.1
 
 psycopg2-binary>=2.9.9
+
+clerk-backend-api>=7.0.0

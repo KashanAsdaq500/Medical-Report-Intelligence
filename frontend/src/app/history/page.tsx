@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@clerk/nextjs";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -17,6 +18,8 @@ import {
 } from "lucide-react";
 
 export default function HistoryPage() {
+  const { getToken } = useAuth();
+
   const [items, setItems] = useState<AssessmentHistoryItem[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,7 +29,7 @@ export default function HistoryPage() {
     setIsLoading(true);
     setError(null);
     try {
-      const data = await fetchHistory(0, 50);
+      const data = await fetchHistory(0, 50, getToken);
       setItems(data.items || []);
       setTotalCount(data.total_records || 0);
     } catch (err: any) {
@@ -168,12 +171,12 @@ export default function HistoryPage() {
                       </td>
                       <td className="py-3.5 px-4 text-navy-900">
                         <span className="font-semibold">{r.age} yrs</span>
-                        <span className="text-slate-400 mx-1">•</span>
-                        <span className="text-slate-600 font-mono text-[11px]">{r.bmi} kg/m²</span>
+                        <span className="text-slate-400 mx-1">Ã¢â‚¬Â¢</span>
+                        <span className="text-slate-600 font-mono text-[11px]">{r.bmi} kg/mÃ‚Â²</span>
                       </td>
                       <td className="py-3.5 px-4 text-navy-900">
                         <span className="font-bold text-clinical-900">{r.glucose} mg/dL</span>
-                        <span className="text-slate-400 mx-1">•</span>
+                        <span className="text-slate-400 mx-1">Ã¢â‚¬Â¢</span>
                         <span className="text-slate-600 text-[11px]">{r.blood_pressure} mm Hg</span>
                       </td>
                       <td className="py-3.5 px-4">

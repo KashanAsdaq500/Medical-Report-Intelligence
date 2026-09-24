@@ -5,10 +5,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=(".env", ".env.local"), extra="ignore")
 
     PROJECT_NAME: str = "Medical Report Intelligence API"
     VERSION: str = "1.0.0"
+    CLERK_SECRET_KEY: str = os.getenv("CLERK_SECRET_KEY", "")
     API_V1_STR: str = "/api/v1"
 
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")

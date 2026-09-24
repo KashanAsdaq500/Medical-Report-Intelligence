@@ -3,7 +3,20 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Activity, Database, BookOpenCheck, Stethoscope, CheckCircle, XCircle } from "lucide-react";
+import {
+  Activity,
+  Database,
+  BookOpenCheck,
+  Stethoscope,
+  Shield,
+  LogIn,
+} from "lucide-react";
+import {
+  Show,
+
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { checkApiHealth } from "@/lib/api";
 
 export function Navbar() {
@@ -17,7 +30,11 @@ export function Navbar() {
   const navItems = [
     { label: "Assessment Evaluation", href: "/", icon: Activity },
     { label: "Audit History", href: "/history", icon: Database },
-    { label: "Clinical Guidelines & Architecture", href: "/about", icon: BookOpenCheck },
+    {
+      label: "Clinical Guidelines & Architecture",
+      href: "/about",
+      icon: BookOpenCheck,
+    },
   ];
 
   return (
@@ -29,26 +46,30 @@ export function Navbar() {
             <div className="w-10 h-10 rounded-lg bg-clinical-900 flex items-center justify-center text-teal-400 shadow-sm group-hover:bg-clinical-800 transition duration-150">
               <Stethoscope className="w-5 h-5 text-white" />
             </div>
+
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-base sm:text-lg font-bold text-navy-900 tracking-tight leading-tight">
                   Medical Report Intelligence
                 </span>
+
                 <span className="hidden sm:inline-flex items-center text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-teal-50 text-teal-800 border border-teal-200/60">
                   CDSS v1.0
                 </span>
               </div>
+
               <span className="text-xs text-slate-500 font-medium block leading-tight">
                 AI-Assisted Clinical Decision-Support System
               </span>
             </div>
           </Link>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.href}
@@ -59,15 +80,20 @@ export function Navbar() {
                       : "text-slate-600 hover:text-navy-900 hover:bg-slate-50 border border-transparent"
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? "text-clinical-700" : "text-slate-400"}`} />
+                  <Icon
+                    className={`w-4 h-4 ${
+                      isActive ? "text-clinical-700" : "text-slate-400"
+                    }`}
+                  />
                   <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          {/* Clinical Backend Engine Status */}
+          {/* Right Side */}
           <div className="flex items-center space-x-3">
+            {/* ML Engine Status */}
             <div className="flex items-center space-x-2 bg-slate-50 border border-slate-200/70 px-3 py-1.5 rounded-full text-xs text-slate-600">
               <span
                 className={`w-2 h-2 rounded-full ${
@@ -78,6 +104,7 @@ export function Navbar() {
                     : "bg-amber-400 animate-pulse"
                 }`}
               />
+
               <span className="text-[11px] font-medium hidden sm:inline">
                 {apiOnline === true
                   ? "ML Engine: Online"
@@ -86,14 +113,32 @@ export function Navbar() {
                   : "Checking Engine..."}
               </span>
             </div>
+
+            {/* Authentication */}
+            <Show when="signed-out">
+              <SignInButton>
+                <button
+                  type="button"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-clinical-900 text-white text-xs font-semibold hover:bg-clinical-800 transition-colors"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>Sign In</span>
+                </button>
+              </SignInButton>
+            </Show>
+
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
           </div>
         </div>
 
-        {/* Mobile Navigation Bar */}
-        <div className="md:hidden flex items-center space-x-1 py-2 border-t border-slate-100 overflow-x-auto">
+        {/* Mobile Navigation */}
+        <div className="lg:hidden flex items-center space-x-1 py-2 border-t border-slate-100 overflow-x-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
+
             return (
               <Link
                 key={item.href}
@@ -109,6 +154,22 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          <Show when="signed-out">
+            <SignInButton>
+              <button
+                type="button"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-clinical-900 text-white text-xs font-semibold whitespace-nowrap"
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span>Sign In</span>
+              </button>
+            </SignInButton>
+          </Show>
+
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
       </div>
     </header>
