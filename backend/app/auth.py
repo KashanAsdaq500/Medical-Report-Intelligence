@@ -12,7 +12,7 @@ AUTHORIZED_PARTIES = [
     "http://localhost:3001",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:3001",
-    "https://medical-report-intelligence-fronten.vercel.app",
+    "https://medical-report-intelligence-fronten-livid.vercel.app",
 ]
 
 
