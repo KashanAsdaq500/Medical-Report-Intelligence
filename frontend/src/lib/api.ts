@@ -5,9 +5,7 @@ import {
   GuidelineCitation,
 } from "@/types";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://medical-report-intelligence-bfsk.vercel.app/api/v1";
+const API_BASE = "/api/backend";
 
 type GetToken = () => Promise<string | null>;
 
@@ -116,3 +114,5 @@ export async function checkApiHealth(): Promise<{
     return { online: false };
   }
 }
+
+
