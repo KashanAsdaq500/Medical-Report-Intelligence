@@ -32,8 +32,8 @@ class Settings(BaseSettings):
     else:
         DATABASE_URL: str = _raw_db_url
 
-    # CORS
-CORS_ORIGINS: List[str] = [
+    # CORS   
+    CORS_ORIGINS: List[str] = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8000",
